@@ -19,7 +19,7 @@ const { admins } = require("./Models/Admin");
 const app = express();
 app.use(express.json());
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const uri = `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${process.env.MONGO_DB_PASSWORD}@cluster0.qjyik.mongodb.net/${process.env.MONGO_DB_NAME}?retryWrites=true&w=majority`;
 
