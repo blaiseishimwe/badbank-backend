@@ -147,6 +147,10 @@ mongoose
       }
     );
 
+    app.get("/test", (req, res) => {
+      res.send(<h1>Welcome to BadBank API</h1>);
+    });
+
     app.listen(PORT);
   })
   .catch((err) => {
