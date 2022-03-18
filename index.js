@@ -80,9 +80,12 @@ mongoose
     app.post("/login", validateLogin, async (req, res) => {
       const { email } = req.body;
 
-      const currentUser = await UserBalances.findOne({ email }).exec();
+      const currentUser = await Users.findOne({ email }).exec();
+      const currentUserBalance = await UserBalances.findOne({ email }).exec();
 
-      res.send(currentUser);
+      const { fullname } = currentUser;
+      const { balance, _id } = currentUserBalance;
+      res.send({ email, fullname, balance, _id });
     });
 
     // Route to deposit (update balance)
