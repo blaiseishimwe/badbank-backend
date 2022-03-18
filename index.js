@@ -70,7 +70,7 @@ mongoose
         const balance = await newUserBalance.save();
 
         // Send to the client the balance info of this new user
-        res.send(balance);
+        res.send({ fullname, ...balance });
       } catch (error) {
         console.log(error);
       }
