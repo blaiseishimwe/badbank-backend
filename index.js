@@ -67,10 +67,11 @@ mongoose
 
         // After creating a new user, use the same email to create them a balance
         const newUserBalance = new UserBalances({ email });
-        const balance = await newUserBalance.save();
+        const newBalance = await newUserBalance.save();
 
         // Send to the client the balance info of this new user
-        res.send({ fullname, ...balance });
+        const { balance, _id } = newBalance;
+        res.send({ fullname, email, balance, _id });
       } catch (error) {
         console.log(error);
       }
